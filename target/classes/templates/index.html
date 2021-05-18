@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<style>
+    .label{
+
+        text-align: right;
+        font-weight: bold;
+    }
+    .input{
+    }
+</style>
+<body>
+<form id="formControl" name="formControl" th:action="@{/dangky}" method="post" modelAttribute="User">
+    <div>
+        <label class="label">Dia Chi Email</label>
+        <input id="email" type="email" name="email" class="input">
+        <span id="error-email"></span>
+
+    </div>
+    <br/>
+    <div>
+        <label class="label">Mat Khau</label>
+        <input id="password" type="passwrod" name="password" class="input">
+        <span id="error-password"></span>
+
+    </div>
+    <br/>
+    <div>
+        <label class="label">Nhap Lai Mat Khau</label>
+        <input id="confirmPassword" type="passwrod" name="password" class="input">
+        <span id="error-confirmPassword"></span>
+    </div>
+    <br/>
+    <div>
+        <label class="label">Ho va Ten</label>
+        <input id="fullName" type="text" name="fullName" class="input">
+        <span id="error-fullName"></span>
+    </div>
+    <br/>
+    <div>
+        <label class="label">Ngay sinh</label>
+        <input id="birthDay" type="date" name="birthDay" class="input">
+        <span id="error-birthDay"></span>
+    </div>
+    <br/>
+    <div>
+        <label class="label">Gioi Tinh</label>
+        <input id="sex" type="checkbox" name="sex" class="input">
+        <span id="error-sex"></span>
+    </div>
+    <br/>
+    <div>
+        <label class="label">Trinh Do Van Hoa</label>
+        <select name="curlter" id="curtle" class="input">
+            <option>Tot nghiep pho thong</option>
+            <option>Cao dang</option>
+            <option>Dai hoc</option>
+            <option>Thac si</option>
+            <option>Tien si</option>
+        </select>
+        <span id="error-curlter"></span>
+    </div>
+    <br/>
+    <div>
+        <label class="label">Dia chi</label>
+        <select name="address" id="address" class="input">
+            <option>TP Ho Chi Minh</option>
+            <option>Da Nang</option>
+            <option>Ha Noi</option>
+            <option>Hue</option>
+        </select>
+        <span id="error-address"></span>
+    </div>
+    <br/>
+    <div>
+        <label class="label">Dien Thoai</label>
+        <input id="phoneNumber" type="number" name="phoneNumber" class="input">
+        <span id="error-phoneNumber"></span>
+    </div>
+    <br/>
+    <div>
+        <button id="save" type="submit" name="save">Luu</button>
+        <button id="cancel" type="reset" name="cancel">Huy bo</button>
+    </div>
+</form>
+</body>
+</html>

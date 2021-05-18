@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Ho ten</td>
+        <td th:text="${userDetail.getFullName()}"></td>
+    </tr>
+    <tr>
+        <td>Ngay sinh</td>
+        <td th:text="${userDetail.getBirthDay()}"></td>
+    </tr>
+    <tr>
+        <td>Gioi tinh</td>
+        <td th:if="${userDetail.isSex()}">Nam</td>
+        <td th:if="${!userDetail.isSex()}">Nu</td>
+    </tr>
+    <tr>
+        <td>Trinh do van hoa</td>
+        <td th:text="${userDetail.getCurlter()}"></td>
+    </tr>
+    <tr>
+        <td>Dia chi</td>
+        <td th:text="${userDetail.getAddress()}"></td>
+    </tr>
+    <tr>
+        <td>Dien thoai</td>
+        <td th:text="${userDetail.getPhoneNumber()}"></td>
+    </tr>
+    <tr>
+        <td>Dia chi email</td>
+        <td th:text="${userDetail.getEmail()}"></td>
+    </tr>
+    <a th:href="@{/trangChu}">
+        <button>Danh sach thanh vien</button>
+    </a>
+</table>
+</body>
+</html>

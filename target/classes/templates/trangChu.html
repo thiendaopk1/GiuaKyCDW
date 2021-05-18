@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<style>
+    .td{
+        border: 1px solid black;
+    }
+</style>
+<body>
+<div>
+    <div>
+        <span>Tong thanh vien</span>
+        <span th:text="${countUsers}"></span>
+    </div>
+    <div>
+        <label>Chon Gioi Tinh</label>
+        <select name="sex" onchange="filterSex(this)">
+            <option value="1">Nam</option>
+            <option value="0">Nu</option>
+        </select>
+    </div>
+    <a th:href="@{/}">
+        <button>Them Thanh Vien</button>
+    </a>
+
+</div>
+<table>
+    <tr>
+        <td class="td">Ho Ten</td>
+        <td class="td">Ngay Sinh</td>
+        <td class="td">Gioi Tinh</td>
+        <td class="td">Email</td>
+    </tr>
+    <tbody  id="dsUsers" >
+        <tr th:each="user:${listUsers}">
+            <td th:text="${user.getFullName()}"></td>
+            <td th:text="${user.getBirthDay()}"></td>
+            <td th:if="${user.isSex()}" >Nam</td>
+            <td th:if="${!user.isSex()}" >Nu</td>
+            <td >
+                <a th:text="${user.getEmail()}" th:href="@{/userDetail(id=${user.getId()})}"/>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+</body>
+<script>
+    function filterSex(Object){
+        var viewSex = Object.value;
+        var url="http://localhost:8081/userSex?sex=" + viewSex;
+        var res="";
+        $.ajax({
+            url:url,
+            success:function (data){
+                for(var i =0; i  < data.length; i++){
+                    res += ' <tr >\n' +
+                        '        <td >'+data[i].fullName+'</td>\n' +
+                        '        <td >'+data[i].birthDay+'</td>\n' ;
+                    if(data[i].sex){
+                        res += '<td  >Nam</td>\n';
+                    }else {
+                        res +='<td >Nu</td>\n' ;
+                    }
+                        res+=
+                        '        <td >\n' +
+                        '            <a href="/userDetail?id='+data[i].id+'">'+data[i].email+'</a>\n' +
+                        '        </td>\n' +
+                        '    </tr>'
+                }
+                document.getElementById('dsUsers').innerHTML=res;
+            }
+        })
+    }
+</script>
+</html>
